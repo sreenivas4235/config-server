@@ -1,0 +1,14 @@
+spring:
+ datasource:
+  url: jdbc:mysql://${DB_HOST:localhost}:3306/productdb
+  username: root
+  password: sreen123
+
+server:
+ servlet:
+   context-path: /pms
+ port: 8080
+      
+      
+      
+      
