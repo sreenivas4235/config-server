@@ -12,6 +12,10 @@ management:
       exposure:
         include: refresh
 
+  tracing:
+    sampling:
+      probability: 1.0
+    
 server:
   port: 8085
   
