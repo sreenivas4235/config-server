@@ -23,7 +23,7 @@ spring:
             predicates:
             - Path=/orders/**
             filters:
-            - RewritePath=/orders/(?<segment>.*), oms/api/v1/orders/${segment}
+            - RewritePath=/orders/(?<segment>.*), /oms/api/v1/orders/${segment}
         
 server:
   port: 9090
