@@ -10,6 +10,20 @@ spring:
             - Path=/payments/**
             filters:
             - RewritePath=/payments/(?<segment>.*), /paymentservice/api/v1/payments/${segment}
+            
+          - id: product-route
+            uri: lb://product-service
+            predicates:
+            - Path=/products/**
+            filters:
+            - RewritePath=/products/(?<segment>.*), /pms/api/v1/products/${segment}
+          
+          - id: order-route
+            uri: lb://order-service
+            predicates:
+            - Path=/orders/**
+            filters:
+            - RewritePath=/orders/(?<segment>.*), oms/api/v1/orders/${segment}
         
 server:
   port: 9090
