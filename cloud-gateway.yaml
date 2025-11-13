@@ -7,7 +7,9 @@ spring:
           - id: payment-route
             uri: lb://payment-service
             predicates:
-            - Path=/paymentservice/api/v1/payments/**
+            - Path=/payments/**
+            filters:
+            - RewritePath=/payments/(?<segment>.*), /paymentservice/api/v1/payments/${segment}
         
 server:
   port: 9090
