@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: payment-route
+        uri: lb://payment-service
+        predicates:
+        - Path= /api/**
+        
+server:
+  port: 9090
+  
