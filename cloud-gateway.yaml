@@ -10,6 +10,10 @@ spring:
             - Path=/payments/**
             filters:
             - RewritePath=/payments/(?<segment>.*), /paymentservice/api/v1/payments/${segment}
+            - name: CircuitBreaker
+              args:
+                name: paymentCircuitBreaker
+                fallbackUri: forward:/fallback/payment
             
           - id: product-route
             uri: lb://product-service
@@ -17,6 +21,10 @@ spring:
             - Path=/products/**
             filters:
             - RewritePath=/products/(?<segment>.*), /pms/api/v1/products/${segment}
+            - name: CircuitBreaker
+              args:
+                name: productCircuitBreaker
+                fallbackUri: forward:/fallback/product
           
           - id: order-route
             uri: lb://order-service
@@ -24,6 +32,10 @@ spring:
             - Path=/orders/**
             filters:
             - RewritePath=/orders/(?<segment>.*), /oms/api/v1/orders/${segment}
+            - name: CircuitBreaker
+              args:
+                name: orderCircuitBreaker
+                fallbackUri: forward:/fallback/order
         
 server:
   port: 9090
