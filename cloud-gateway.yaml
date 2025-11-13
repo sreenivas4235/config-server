@@ -27,4 +27,16 @@ spring:
         
 server:
   port: 9090
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - refresh
+        
+  tracing:
+    sampling:
+      probability: 1.0
+  
   
