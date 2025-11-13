@@ -1,11 +1,13 @@
 spring:
-  cloud:
+ cloud:
     gateway:
-      routes:
-      - id: payment-route
-        uri: lb://payment-service
-        predicates:
-        - Path= /api/**
+      server:
+        webflux:
+          routes:
+          - id: payment-route
+            uri: lb://payment-service
+            predicates:
+            - Path = /api/**
         
 server:
   port: 9090
