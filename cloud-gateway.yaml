@@ -31,7 +31,7 @@ spring:
             predicates:
             - Path=/orders/**
             filters:
-            - RewritePath=/orders/?(?<segment>.*), /oms/api/v1/orders${segment:+/${segment}}
+            - RewritePath=/orders/?(?<segment>.*), /oms/api/v1/orders/${segment}
             - name: CircuitBreaker
               args:
                 name: orderCircuitBreaker
